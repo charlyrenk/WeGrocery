@@ -6,8 +6,13 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     }
 
     self.addNewItem = function (){
-        console.log('addNewItem button clicked')
+        console.log('addNewItem button clicked.')
         var newItemNo = self.newGroceryItems.list.length + 1;
         self.newGroceryItems.list.push({})
+    }
+    self.removeItemInputRow = function (item){
+        console.log('removeItemInputRow button clicked.')
+        var index = self.newGroceryItems.list.indexOf(item);
+        self.newGroceryItems.list.splice(index, 1);
     }
 }]);
