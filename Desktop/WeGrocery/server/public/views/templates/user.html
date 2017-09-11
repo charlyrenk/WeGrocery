@@ -5,25 +5,26 @@
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
+        <div>
+            <label for="listName">Grocery List Name:</label>
+            <input type="text" />
+            <!-- ng-model="lc.user.tables" -->
+        </div>
         <!-- Add this later: ng-submit="vm.processForm()" -->
-        <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button>
-        <div ng-show="newItemInputs">
-        <div>
+        <!-- <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button> -->
+
+        <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button> 
+        <div class = "list inputs" ng-repeat="item in uc.newGroceryItems.list">
             <label for="item">Grocery Item:</label>
-            <input type="text" />
-            <!-- ng-model="lc.user.tables" -->
-        </div>
-        <div>
+            <input type="text" ng-model="item.name" name="" placeholder="Enter Item Name">
+            <br>
             <label for="quantity">Quantity:</label>
-            <input type="number" />
-            <!-- ng-model="lc.user.tables" -->
-        </div>
-        <div>
+            <input type="number" ng-model="item.quantity" number="" placeholder="Enter quantity">
+            <br>
             <label for="notes">Notes:</label>
-            <input type="text" />
-            <!-- ng-model="lc.user.tables" -->
-        </div>
-        <button>Add item</button>
+            <input type="text" ng-model="item.notes" notes="" placeholder="Enter any additional information">
+            <br>
+            <button class="remove" ng-click="removeChoice()">Remove</button>
         </div>
         <button>Submit</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>

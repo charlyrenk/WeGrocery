@@ -1,6 +1,8 @@
-myApp.controller('UserController', function(UserService) {
+myApp.controller('UserController', ['UserService', 'ListService', function(UserService, ListService) {
   console.log('UserController created');
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
-});
+  vm.addNewItem = ListService.addNewItem;
+  vm.newGroceryItems = ListService.newGroceryItems;
+}]);
