@@ -1,6 +1,7 @@
 <div class="container">
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+    {{uc.userObject}}
 
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
@@ -14,20 +15,21 @@
         <!-- <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button> -->
 
         <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button> 
-        <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.list">
-            <!-- <p>{{uc.newGroceryItems.list}}</p> -->
+        <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
+
+            <p>{{uc.newGroceryItems.list}}</p>
             <label for="item">Grocery Item:</label>
-            <input type="text" ng-model="uc.newGroceryList.itemName" name="" placeholder="Enter Item Name.">
+            <input type="text" ng-model="uc.newGroceryList[$index].itemName" itemName="" placeholder="Enter Item Name.">
             <br>
             <label for="quantity">Quantity:</label>
-            <input type="number" ng-model="uc.newGroceryList.itemQuantity" number="" placeholder="Enter a quantity.">
+            <input type="number" ng-model="uc.newGroceryList[$index].itemQuantity" quantity="" placeholder="Enter a quantity.">
             <br>
             <label for="notes">Notes:</label>
-            <input type="text" ng-model="uc.newGroceryList.itemNotes" notes="" placeholder="Enter any additional information.npm ">
+            <input type="text" ng-model="uc.newGroceryList[$index].itemNotes" itemNotes="" placeholder="Enter any additional information.npm ">
             <br>
-            <button class="remove" ng-click="uc.removeItemInputRow(uc.newGroceryList)">Remove</button>
+            <button class="remove" ng-click="uc.removeItemInputRow(newGroceryList)">Remove</button>
         </div>
-        <button ng-click = "uc.sendNewList(uc.newGroceryList)">Add New List</button>
+        <button ng-click = "uc.sendNewList(uc.newGroceryList, uc.userObject)">Complete New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 

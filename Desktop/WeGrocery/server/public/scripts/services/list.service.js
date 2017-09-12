@@ -2,22 +2,28 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     console.log('ListService loaded');
     var self = this;
     self.newGroceryItems = {
-        list: [{}]
+        newGroceryList: []
     }
-
+    var itemStatus = false;
     self.addNewItem = function (){
         console.log('addNewItem button clicked.')
-        var newItemNo = self.newGroceryItems.list.length + 1;
-        self.newGroceryItems.list.push({})
+        var newItemNo = self.newGroceryItems.newGroceryList.length + 1;
+        self.newGroceryItems.newGroceryList.push({})
     }
     self.removeItemInputRow = function (item){
         console.log('removeItemInputRow button clicked.')
-        var index = self.newGroceryItems.list.indexOf(item);
-        self.newGroceryItems.list.splice(index, 1);
+        var index = self.newGroceryItems.newGroceryList.indexOf(item);
+        self.newGroceryItems.newGroceryList.splice(index, 1);
     }
-    self.sendNewList = function (newGroceryList){
-        console.log('sendNewList button clicked.', newGroceryList)
-        $http.post('/grocery', newGroceryList).then(function (response) {
+    self.sendNewList = function (newGroceryList, user){
+        console.log('sendNewList button clicked.', newGroceryList, user, itemStatus)
+        var data = {
+            newGroceryList: newGroceryList,
+            user: user,
+            itemStatus: itemStatus
+        }
+        console.log(data)
+        $http.post('/grocery', data).then(function (response) {
             console.log('Saved new grocery list!', response);
         });
     }

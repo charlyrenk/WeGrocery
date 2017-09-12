@@ -12,10 +12,11 @@ router.post('/', function(req, res) {
     var newGroceryList;
     // fields that rent and sale have in commmon
     var groceryListObject = {
-        listName: req.body.listName,
-        itemName: req.body.itemName,
-        itemQuantity: req.body.itemQuantity,
-        itemNotes: req.body.itemNotes
+        listName: req.body.newGroceryList.listName,
+        newGroceryList: req.body.newGroceryList, 
+        itemStatus: req.body.itemStatus,
+        username: req.body.user.userName,
+        user_id: req.body.user.id   
     };
     newGroceryList = new Grocery(groceryListObject)
     // save to the selected schema

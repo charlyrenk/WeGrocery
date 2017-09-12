@@ -3,9 +3,10 @@ var Schema = mongoose.Schema;
 
 var grocerySchema = new Schema({
     listName: {type: String},
-    itemName: {type: String},
-    listQuantity: {type: Number},
-    itemNotes: {type: String}
+    newGroceryList: {type: Array},
+    itemStatus: {type: Boolean},
+    username: {type: String},
+    user_id: {type: String}
 },
 {
     collection: 'grocery_list'
