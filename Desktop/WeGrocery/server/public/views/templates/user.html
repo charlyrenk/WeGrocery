@@ -17,17 +17,17 @@
         <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.list">
             <p>{{uc.newGroceryItems.list}}</p>
             <label for="item">Grocery Item:</label>
-            <input type="text" ng-model="item.name" name="" placeholder="Enter Item Name">
+            <input type="text" ng-model="uc.newGroceryList.itemName" name="" placeholder="Enter Item Name">
             <br>
             <label for="quantity">Quantity:</label>
-            <input type="number" ng-model="item.quantity" number="" placeholder="Enter quantity">
+            <input type="number" ng-model="uc.newGroceryList.itemQuantity" number="" placeholder="Enter quantity">
             <br>
             <label for="notes">Notes:</label>
-            <input type="text" ng-model="item.notes" notes="" placeholder="Enter any additional information">
+            <input type="text" ng-model="uc.newGroceryList.itemNotes" notes="" placeholder="Enter any additional information">
             <br>
-            <button class="remove" ng-click="uc.removeItemInputRow(item)">Remove</button>
+            <button class="remove" ng-click="uc.removeItemInputRow(uc.newGroceryList)">Remove</button>
         </div>
-        <button ng-click = "uc.sendNewList(item)">Complete List</button>
+        <button ng-click = "uc.sendNewList(uc.newGroceryList)">Add New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 

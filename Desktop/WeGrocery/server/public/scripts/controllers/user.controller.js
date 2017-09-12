@@ -6,4 +6,5 @@ myApp.controller('UserController', ['UserService', 'ListService', function(UserS
   vm.addNewItem = ListService.addNewItem;
   vm.newGroceryItems = ListService.newGroceryItems;
   vm.removeItemInputRow = ListService.removeItemInputRow;
+  vm.sendNewList = ListService.sendNewList;
 }]);

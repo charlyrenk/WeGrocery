@@ -15,4 +15,7 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         var index = self.newGroceryItems.list.indexOf(item);
         self.newGroceryItems.list.splice(index, 1);
     }
+    self.sendNewList = function (newGroceryList){
+        console.log('sendNewList button clicked.', newGroceryList)
+    }
 }]);
