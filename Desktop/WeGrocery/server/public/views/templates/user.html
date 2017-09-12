@@ -7,7 +7,7 @@
     <form ng-show="showTheForm">
         <div>
             <label for="listName">Grocery List Name:</label>
-            <input type="text" />
+            <input type="text" ng-model="uc.newGroceryList.listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
         </div>
         <!-- Add this later: ng-submit="vm.processForm()" -->
@@ -15,15 +15,15 @@
 
         <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button> 
         <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.list">
-            <p>{{uc.newGroceryItems.list}}</p>
+            <!-- <p>{{uc.newGroceryItems.list}}</p> -->
             <label for="item">Grocery Item:</label>
-            <input type="text" ng-model="uc.newGroceryList.itemName" name="" placeholder="Enter Item Name">
+            <input type="text" ng-model="uc.newGroceryList.itemName" name="" placeholder="Enter Item Name.">
             <br>
             <label for="quantity">Quantity:</label>
-            <input type="number" ng-model="uc.newGroceryList.itemQuantity" number="" placeholder="Enter quantity">
+            <input type="number" ng-model="uc.newGroceryList.itemQuantity" number="" placeholder="Enter a quantity.">
             <br>
             <label for="notes">Notes:</label>
-            <input type="text" ng-model="uc.newGroceryList.itemNotes" notes="" placeholder="Enter any additional information">
+            <input type="text" ng-model="uc.newGroceryList.itemNotes" notes="" placeholder="Enter any additional information.npm ">
             <br>
             <button class="remove" ng-click="uc.removeItemInputRow(uc.newGroceryList)">Remove</button>
         </div>

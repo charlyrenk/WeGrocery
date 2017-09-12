@@ -17,5 +17,8 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     }
     self.sendNewList = function (newGroceryList){
         console.log('sendNewList button clicked.', newGroceryList)
+        $http.post('/grocery', newGroceryList).then(function (response) {
+            console.log('Saved new grocery list!', response);
+        });
     }
 }]);
