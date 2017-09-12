@@ -14,7 +14,8 @@
         <!-- <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button> -->
 
         <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button> 
-        <div class = "list inputs" ng-repeat="item in uc.newGroceryItems.list">
+        <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.list">
+            <p>{{uc.newGroceryItems.list}}</p>
             <label for="item">Grocery Item:</label>
             <input type="text" ng-model="item.name" name="" placeholder="Enter Item Name">
             <br>
@@ -26,7 +27,7 @@
             <br>
             <button class="remove" ng-click="uc.removeItemInputRow(item)">Remove</button>
         </div>
-        <button>Submit</button>
+        <button ng-click = "uc.sendNewList(item)">Complete List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 

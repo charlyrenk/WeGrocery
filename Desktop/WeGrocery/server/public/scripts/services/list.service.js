@@ -2,7 +2,7 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     console.log('ListService loaded');
     var self = this;
     self.newGroceryItems = {
-        list: [{name: 'apple', quantity: 4, notes: 'Good'}]
+        list: [{}]
     }
 
     self.addNewItem = function (){
