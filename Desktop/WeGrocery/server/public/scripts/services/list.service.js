@@ -4,7 +4,8 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     self.newGroceryItems = {
         newGroceryList: []
     }
-    var itemStatus = false;
+    
+   
     self.addNewItem = function (){
         console.log('addNewItem button clicked.')
         var newItemNo = self.newGroceryItems.newGroceryList.length + 1;
@@ -14,13 +15,17 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         console.log('removeItemInputRow button clicked.')
         var index = self.newGroceryItems.newGroceryList.indexOf(item);
         self.newGroceryItems.newGroceryList.splice(index, 1);
+
     }
     self.sendNewList = function (newGroceryList, user){
-        console.log('sendNewList button clicked.', newGroceryList, user, itemStatus)
+        console.log('sendNewList button clicked.', newGroceryList, user) 
+        for (var i = 0; i < self.newGroceryItems.newGroceryList.length; i ++) {
+             newGroceryList[i].itemStatus = false
+        }
+        console.log('index test', newGroceryList)
         var data = {
             newGroceryList: newGroceryList,
             user: user,
-            itemStatus: itemStatus
         }
         console.log(data)
         $http.post('/grocery', data).then(function (response) {
