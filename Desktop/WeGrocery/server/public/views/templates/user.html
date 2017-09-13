@@ -1,22 +1,22 @@
 <div class="container">
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-    {{uc.userObject}}
+
 
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
         <div>
             <label for="listName">Grocery List Name:</label>
-            <input type="text" ng-model="uc.newGroceryList.listName" placeholder="Name your new list.">
+            <input type="text" ng-model="uc.listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
         </div>
         <!-- Add this later: ng-submit="vm.processForm()" -->
         <!-- <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button> -->
 
-        <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button> 
-        <div class = "list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
-            <p>{{uc.newGroceryList[0]}}</p>
+        <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button>
+        <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
+            <!-- <p>{{uc.newGroceryList[0]}}</p> -->
             <label for="item">Grocery Item:</label>
             <input type="text" ng-model="uc.newGroceryList[$index].itemName" itemName="" placeholder="Enter Item Name.">
             <br>
@@ -29,10 +29,26 @@
             <button class="remove" ng-click="uc.removeItemInputRow(newGroceryList)">Remove</button>
 
         </div>
-        <button ng-click = "uc.sendNewList(uc.newGroceryList, uc.userObject)">Complete New List</button>
+        <button ng-click="uc.sendNewList(uc.newGroceryList, uc.listName, uc.userObject)">Complete New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 
+    <div id="userListContainer">
+        <h2>Your Lists</h2>
+        {{uc.existingGroceryLists.list}}
+        <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
+            <p>List name: {{list.listName}}</p>
+            <div ng-repeat="item in list.newGroceryList">
+                Item Name: {{item.itemName}}
+                <br>
+                Quantity: {{item.itemQuantity}}
+                <br>
+                Notes: {{item.itemNotes}}
+            </div>
+        </div>
+    </div>
+
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 </div>
+
 <div ng-include="'views/partials/nav.html'"></div>

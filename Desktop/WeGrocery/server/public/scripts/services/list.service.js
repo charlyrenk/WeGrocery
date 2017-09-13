@@ -5,28 +5,29 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         newGroceryList: []
     }
     self.existingGroceryLists = {
-        list:[]
+        list: []
     }
 
-    self.addNewItem = function (){
+    self.addNewItem = function () {
         console.log('addNewItem button clicked.')
         var newItemNo = self.newGroceryItems.newGroceryList.length + 1;
         self.newGroceryItems.newGroceryList.push({})
     }
-    self.removeItemInputRow = function (item){
+    self.removeItemInputRow = function (item) {
         console.log('removeItemInputRow button clicked.')
         var index = self.newGroceryItems.newGroceryList.indexOf(item);
         self.newGroceryItems.newGroceryList.splice(index, 1);
 
     }
-    self.sendNewList = function (newGroceryList, user){
+    self.sendNewList = function (newGroceryList, listName, user) {
         console.log('sendNewList button clicked.')
-        for (var i = 0; i < self.newGroceryItems.newGroceryList.length; i ++) {
-             newGroceryList[i].itemStatus = false
+        for (var i = 0; i < self.newGroceryItems.newGroceryList.length; i++) {
+            newGroceryList[i].itemStatus = false
         }
         var data = {
             newGroceryList: newGroceryList,
-            user: user,
+            listName: listName,
+            user: user
         }
 
         $http.post('/grocery', data).then(function (response) {
@@ -34,16 +35,17 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         });
     }
 
-    self.getLists= function (userObject){
+    self.getLists = function (userObject) {
         $http.get('/grocery').then(function (response) {
             console.log('User from get:', userObject)
-            console.log('data:',response.data)
+            console.log('data:', response.data)
             var userIdCheck = userObject.id
             console.log('user: ', userIdCheck)
 
-            for (var i = 0; i < response.data.length; i ++){
-            if(response.data[i].user_id === userIdCheck)
-                self.existingGroceryLists.list.push(response.data[i])
+            for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].user_id === userIdCheck) {
+                    self.existingGroceryLists.list.push(response.data[i])
+                }
             }
             console.log('Get return:', self.existingGroceryLists.list)
 

@@ -12,7 +12,7 @@ router.post('/', function (req, res) {
     var newGroceryList;
     // fields that rent and sale have in commmon
     var groceryListObject = {
-        listName: req.body.newGroceryList.listName,
+        listName: req.body.listName,
         newGroceryList: req.body.newGroceryList,
         itemStatus: req.body.itemStatus,
         username: req.body.user.userName,
