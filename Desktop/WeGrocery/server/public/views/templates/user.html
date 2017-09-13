@@ -11,33 +11,36 @@
             <input type="text" ng-model="uc.listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
         </div>
-        <!-- Add this later: ng-submit="vm.processForm()" -->
-        <!-- <button class="btn btn-default" ng-click="newItemInputs = !newItemInputs">Add new grocery item to list</button> -->
 
-        <button class="addfields" ng-click="uc.addNewItem()">Add Grocery Item</button>
+        <button class= 'addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
         <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
             <!-- <p>{{uc.newGroceryList[0]}}</p> -->
             <label for="item">Grocery Item:</label>
             <input type="text" ng-model="uc.newGroceryList[$index].itemName" itemName="" placeholder="Enter Item Name.">
-            <br>
+           
             <label for="quantity">Quantity:</label>
             <input type="number" ng-model="uc.newGroceryList[$index].itemQuantity" quantity="" placeholder="Enter a quantity.">
-            <br>
+            
             <label for="notes">Notes:</label>
             <input type="text" ng-model="uc.newGroceryList[$index].itemNotes" itemNotes="" placeholder="Enter any additional information.npm ">
-            <br>
+            
             <button class="remove" ng-click="uc.removeItemInputRow(newGroceryList)">Remove</button>
 
         </div>
+        <br>
         <button ng-click="uc.sendNewList(uc.newGroceryList, uc.listName, uc.userObject)">Complete New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 
+
     <div id="userListContainer">
         <h2>Your Lists</h2>
-        {{uc.existingGroceryLists.list}}
         <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
-            <p>List name: {{list.listName}}</p>
+            <div class="userListHeaders">
+            <h4>{{list.listName}}</h4> 
+            <button class= 'addButton'>See List</button><button class = 'editButton'>Edit List</button>
+            </div>
+
             <div ng-repeat="item in list.newGroceryList">
                 Item Name: {{item.itemName}}
                 <br>

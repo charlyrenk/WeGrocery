@@ -78,3 +78,19 @@ li a:hover {
   text-decoration: underline;
   color: #eee;
 }
+
+.userListHeaders{
+  background-color: forestgreen;
+  width: 100%;
+  border-radius: 0px;
+  color: white;
+}
+.addButton{
+  background-color: skyblue;
+}
+.editButton{
+  background-color: orange;
+}
+.listInputs{
+  alig: left;
+}

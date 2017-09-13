@@ -37,7 +37,6 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
 
     self.getLists = function (userObject) {
         $http.get('/grocery').then(function (response) {
-            console.log('User from get:', userObject)
             console.log('data:', response.data)
             var userIdCheck = userObject.id
             console.log('user: ', userIdCheck)
