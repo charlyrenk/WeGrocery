@@ -4,8 +4,10 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
     self.newGroceryItems = {
         newGroceryList: []
     }
-    
-   
+    self.existingGroceryLists = {
+        list:[]
+    }
+
     self.addNewItem = function (){
         console.log('addNewItem button clicked.')
         var newItemNo = self.newGroceryItems.newGroceryList.length + 1;
@@ -18,18 +20,34 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
 
     }
     self.sendNewList = function (newGroceryList, user){
-        console.log('sendNewList button clicked.', newGroceryList, user) 
+        console.log('sendNewList button clicked.')
         for (var i = 0; i < self.newGroceryItems.newGroceryList.length; i ++) {
              newGroceryList[i].itemStatus = false
         }
-        console.log('index test', newGroceryList)
         var data = {
             newGroceryList: newGroceryList,
             user: user,
         }
-        console.log(data)
+
         $http.post('/grocery', data).then(function (response) {
             console.log('Saved new grocery list!', response);
         });
+    }
+
+    self.getLists= function (userObject){
+        $http.get('/grocery').then(function (response) {
+            console.log('User from get:', userObject)
+            console.log('data:',response.data)
+            var userIdCheck = userObject.id
+            console.log('user: ', userIdCheck)
+
+            for (var i = 0; i < response.data.length; i ++){
+            if(response.data[i].user_id === userIdCheck)
+                self.existingGroceryLists.list.push(response.data[i])
+            }
+            console.log('Get return:', self.existingGroceryLists.list)
+
+        });
+
     }
 }]);
