@@ -6,11 +6,11 @@
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
-        <div>
+        <md-input-container>
             <label for="listName">Grocery List Name:</label>
             <input type="text" ng-model="uc.listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
-        </div>
+        </md-input-container>
 
         <button class= 'addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
         <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
@@ -38,15 +38,17 @@
         <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
             <div class="userListHeaders">
             <h4>{{list.listName}}</h4> 
-            <button class= 'addButton'>See List</button><button class = 'editButton'>Edit List</button>
+            <button class= 'addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]">See List</button><button class = 'editButton'>Edit List</button>
             </div>
 
             <div ng-repeat="item in list.newGroceryList">
+                <div ng-show= "showTheList[item[$index]]">
                 Item Name: {{item.itemName}}
                 <br>
                 Quantity: {{item.itemQuantity}}
                 <br>
                 Notes: {{item.itemNotes}}
+                </div>
             </div>
         </div>
     </div>
