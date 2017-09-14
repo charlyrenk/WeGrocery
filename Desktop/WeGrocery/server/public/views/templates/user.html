@@ -52,6 +52,7 @@
                     Item Name: {{item.itemName}}
                     <br> Quantity: {{item.itemQuantity}}
                     <br> Notes: {{item.itemNotes}}
+                    <input type="checkbox" ng-model="uc.updatedGroceryList[$index].itemStatus">
                 </div>
             </div>
             <div ng-repeat="item in list.newGroceryList">
