@@ -51,4 +51,8 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         });
 
     }
+
+    self.changeItemStatus = function (itemName, itemStatus){
+        console.log(itemName, "'s status changed to ", itemStatus)
+    }
 }]);
