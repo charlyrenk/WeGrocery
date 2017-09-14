@@ -80,7 +80,7 @@ li a:hover {
 }
 
 .userListHeaders{
-  background-color: forestgreen;
+  background-color: #73CF81;
   width: 100%;
   border-radius: 0px;
   color: white;
@@ -92,5 +92,5 @@ li a:hover {
   background-color: orange;
 }
 .listInputs{
-  alig: left;
+ float: left;
 }
